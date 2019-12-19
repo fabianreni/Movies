@@ -12,13 +12,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-
+        debug{
+            buildConfigField 'String', "API_KEY",movieapi
+            resValue 'string', "apy_key" , movieapi
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
+            buildConfigField 'String', "API_KEY",movieapi
+            resValue 'string', "apy_key" , movieapi
         }
     }
+
+    dataBinding.enabled=true
 }
 
 dependencies {
@@ -26,7 +32,7 @@ dependencies {
     def lifecycle_version="2.0.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
@@ -36,5 +42,9 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$pagin_version"
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    annotationProcesssor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    //annotationProcesssor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 }
