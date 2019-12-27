@@ -1,10 +1,12 @@
 package com.example.movies.Fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ public class LoginFragment extends Fragment {
     SQLiteOpenHelper openHelper;
     SQLiteDatabase db;
     Cursor cursor;
+    SharedPreferences sharedpreferences;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class LoginFragment extends Fragment {
 
         openHelper=new DatabaseHelper(getActivity());
         db=openHelper.getReadableDatabase();
+
+        sharedpreferences= PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
         bt_regist=v.findViewById(R.id.bt_register);
@@ -51,11 +56,16 @@ public class LoginFragment extends Fragment {
         bt_log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String names=name.getText().toString();
                 String password=pass.getText().toString();
                 cursor=db.rawQuery("SELECT * FROM "+DatabaseHelper.TABLE_NAME+ " WHERE " +DatabaseHelper.COL_2 + " =? AND " + DatabaseHelper.COL_4 +" =? ", new String[]{names,password});
                 if(cursor!=null){
                     if (cursor.getCount()>0){
+                        SharedPreferences.Editor editor=sharedpreferences.edit();
+                        editor.putString(getActivity().getString(R.string.NAME),names);
+                        editor.putString(getActivity().getString(R.string.PASS),password);
+                        editor.commit();
                         Toast.makeText(getActivity(),"Login successfully",Toast.LENGTH_LONG).show();
                         FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.mainActivity, new ContainerFragment());
