@@ -15,28 +15,32 @@ import static com.example.movies.constant.Constant.NUMBER_OF_THREAD_FIVE;
 import static com.example.movies.constant.Constant.PAGE_LOAD_SIZE_HINT;
 import static com.example.movies.constant.Constant.PAGE_SIZE;
 import static com.example.movies.constant.Constant.Prefetch_Distance;
+
 public class MainViewModel extends ViewModel {
-    private  String sort_criterial;
+
+    private String sort_criteria;
     private LiveData<PagedList<Result>> listLiveData;
 
-    public MainViewModel(String sort_criterial) {
-        this.sort_criterial = sort_criterial;
-        Executor executor= Executors.newFixedThreadPool(NUMBER_OF_THREAD_FIVE);
+    public MainViewModel(String sort_criteria) {
+        this.sort_criteria = sort_criteria;
 
-        MoviewDataSourceFactory sourceFactory=new MoviewDataSourceFactory(sort_criterial);
+        Executor executor = Executors.newFixedThreadPool(NUMBER_OF_THREAD_FIVE);
 
-        PagedList.Config config=new PagedList.Config.Builder()
+        MoviewDataSourceFactory sourceFactory = new MoviewDataSourceFactory(sort_criteria);
+
+        PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
                 .setInitialLoadSizeHint(PAGE_LOAD_SIZE_HINT)
                 .setPageSize(PAGE_SIZE)
                 .setPrefetchDistance(Prefetch_Distance)
                 .build();
-        listLiveData=new LivePagedListBuilder<>(sourceFactory,config)
+
+        listLiveData = new LivePagedListBuilder<>(sourceFactory, config)
                 .setFetchExecutor(executor)
                 .build();
     }
-    public LiveData<PagedList<Result>> geLlistLiveData(){
+
+    public LiveData<PagedList<Result>> getListLiveData() {
         return listLiveData;
     }
-
 }

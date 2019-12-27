@@ -25,12 +25,6 @@ public class ProfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_profil, container, false);
 
-        //if keyboard is showing set bottomNavigationBar's visibility to GONE
-        //if keyboard is showing set bottomNavigationBar's visibility to GONE
-//        Context context=getActivity();
-//        mMainNav=((MainActivity)context).findViewById(R.id.main_nav);
-//        mMainNav.setVisibility(View.VISIBLE);
-
         return v;
   }
 

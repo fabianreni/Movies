@@ -8,11 +8,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    @GET("movie/{sort_critical}")
-    Call <MovieResponse> getAllMovies (
-            @Path("sort_critical") String sort_critical,
-            @Query("apy_key") String apy_key,
-            @Query("lenguage") String lenguage,
+    @GET("movie/{sort_criteria}")
+    Call<MovieResponse> getAllMovies(
+            @Path("sort_criteria") String sort_criteria,
+            @Query("api_key") String api_key,
+            @Query("language") String language,
             @Query("page") int page
     );
 

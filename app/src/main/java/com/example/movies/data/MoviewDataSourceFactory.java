@@ -7,20 +7,21 @@ import androidx.paging.DataSource;
 import com.example.movies.models.Result;
 
 public class MoviewDataSourceFactory extends DataSource.Factory<Integer, Result> {
-    private String sort_criterial;
+
+    private String sort_criteria;
     private MutableLiveData<MovieDataSource> liveData;
     private MovieDataSource dataSource;
 
-    public MoviewDataSourceFactory(String sort_criterial) {
-        this.sort_criterial = sort_criterial;
-        liveData=new MutableLiveData<>();
+    public MoviewDataSourceFactory(String sort_criteria) {
+        this.sort_criteria = sort_criteria;
+        liveData = new MutableLiveData<>();
     }
 
     @NonNull
     @Override
     public DataSource<Integer, Result> create() {
-        dataSource=new MovieDataSource(sort_criterial);
-        liveData=new MutableLiveData<>();
+        dataSource = new MovieDataSource(sort_criteria);
+        liveData = new MutableLiveData<>();
         liveData.postValue(dataSource);
         return dataSource;
     }

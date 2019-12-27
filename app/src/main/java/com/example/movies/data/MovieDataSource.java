@@ -19,24 +19,22 @@ import static com.example.movies.constant.Constant.PREVIOUS_PAGE_KEY_TWO;
 
 public class MovieDataSource extends PageKeyedDataSource<Integer, Result> {
 
+    private String sort_criteria;
 
-
-    private  String sort_criterial;
-
-    public MovieDataSource(String sort_criterial) {
-        this.sort_criterial = sort_criterial;
+    public MovieDataSource(String sort_criteria) {
+        this.sort_criteria = sort_criteria;
     }
 
 
     @Override
-    public void loadInitial(@NonNull LoadInitialParams params, @NonNull final LoadInitialCallback callback) {
-        ApiClient.getInstance().getApiService().getAllMovies(sort_criterial,APIKEY,LANGUAGE,PAGE_ONE)
+    public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Integer, Result> callback) {
+        ApiClient.getInstance().getApiService().getAllMovies(sort_criteria, APIKEY, LANGUAGE, PAGE_ONE)
                 .enqueue(new Callback<MovieResponse>() {
                     @Override
                     public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                         if(response.isSuccessful()){
                             callback.onResult(response.body().getResults(),
-                                    PREVIOUS_PAGE_KEY_ONE,PREVIOUS_PAGE_KEY_TWO);
+                                    PREVIOUS_PAGE_KEY_ONE, PREVIOUS_PAGE_KEY_TWO);
                         }
                     }
 
@@ -48,20 +46,20 @@ public class MovieDataSource extends PageKeyedDataSource<Integer, Result> {
     }
 
     @Override
-    public void loadBefore(@NonNull LoadParams params, @NonNull LoadCallback callback) {
+    public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, Result> callback) {
 
     }
 
     @Override
-    public void loadAfter(@NonNull LoadParams params, @NonNull final LoadCallback callback) {
-        final int currentPage= (int) params.key;
-        ApiClient.getInstance().getApiService().getAllMovies(sort_criterial,APIKEY,LANGUAGE,PAGE_ONE)
+    public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Result> callback) {
+        final int currentPage = params.key;
+        ApiClient.getInstance().getApiService().getAllMovies(sort_criteria, APIKEY, LANGUAGE, currentPage)
                 .enqueue(new Callback<MovieResponse>() {
                     @Override
                     public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                         if(response.isSuccessful()){
-                            int nextPage=currentPage+1;
-                            callback.onResult(response.body().getResults(),nextPage);
+                            int nextPage = currentPage + 1;
+                            callback.onResult(response.body().getResults(), nextPage);
                         }
                     }
 
