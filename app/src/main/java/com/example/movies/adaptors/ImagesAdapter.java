@@ -21,7 +21,7 @@ import static com.example.movies.constant.Constant.IMAGE_SIZE;
 import static com.example.movies.constant.Constant.IMAGE_URL;
 
 public class ImagesAdapter extends RecyclerView.Adapter<com.example.movies.adaptors.ImagesAdapter.MyViewHolder> {
-
+        //kep bealitasa a film reszlet oldalan
         private List<ImageResult> images;
         private Context context;
         private View rootView;
@@ -50,7 +50,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<com.example.movies.adapt
             viewHolder.image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final ImageButton imgBtn_closeImage = rootView.findViewById(R.id.imgBtn_closeImage);
+                    final ImageButton imgBtn_closeImage = rootView.findViewById(R.id.bt_imgClose);
                     final ImageView iv_fullImage = rootView.findViewById(R.id.iv_fullImage);
 
                     ((MainActivity) context).getSupportActionBar().hide();

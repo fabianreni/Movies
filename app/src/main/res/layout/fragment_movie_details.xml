@@ -18,7 +18,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/imgBtn_close"
+        app:layout_constraintEnd_toStartOf="@+id/bt_imgClose"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,13 +35,13 @@
     </WebView>
 
     <ImageButton
-        android:id="@+id/imgBtn_close"
+        android:id="@+id/bt_imgClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_delete"
+        android:src="@drawable/baseline_clear_black_24dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,8 +56,8 @@
         app:layout_constraintTop_toBottomOf="@+id/photos_label" />
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
@@ -99,7 +99,7 @@
 
     <TextView
         android:id="@+id/description_label"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -145,7 +145,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_delete"
+        android:src="@drawable/baseline_clear_black_24dp"
         android:tint="#E53935"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
