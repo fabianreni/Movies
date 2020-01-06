@@ -23,12 +23,10 @@ import com.example.movies.viewmodels.MainViewModelFactory;
 
 
 public class FirstPageFragment extends Fragment {
-   // private BottomNavigationView mMainNav;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private MoviePageListAdaptor adaptor;
     private MainViewModel viewModel;
-    //private String sort_criteria="popular";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

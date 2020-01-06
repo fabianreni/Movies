@@ -52,7 +52,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<com.example.movies.adapt
             viewHolder.image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final ImageButton imgBtn_closeImage = rootView.findViewById(R.id.bt_imgClose);
+                    final ImageButton imgBtn_closeImage = rootView.findViewById(R.id.bt_closeImg);
                     final ImageView iv_fullImage = rootView.findViewById(R.id.iv_fullImage);
 
                     ((MainActivity) context).getSupportActionBar().hide();

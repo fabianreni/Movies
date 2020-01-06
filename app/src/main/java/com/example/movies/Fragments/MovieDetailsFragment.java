@@ -1,4 +1,4 @@
-package com.example.movies.fragments;
+package com.example.movies.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.movies.MainActivity;
 
+import com.example.movies.R;
 import com.example.movies.adaptors.ImagesAdapter;
 
 import com.example.movies.adaptors.SimilarMoviesAdapter;
@@ -150,7 +151,7 @@ public class MovieDetailsFragment extends Fragment {
             }
         });
 
-        ImageButton imgBtn_close = view.findViewById(R.id.bt_imgClose);
+        ImageButton imgBtn_close = view.findViewById(R.id.bt_closeImg);
         imgBtn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,6 +165,7 @@ public class MovieDetailsFragment extends Fragment {
                 frag_trans.commit();
             }
         });
+
         return view;
     }
 
@@ -191,35 +193,3 @@ public class MovieDetailsFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 }
-//
-//    private void savedMovieDetails(View view){
-//        int movie_id = movie.getId();
-//        DatabaseHelper db = new DatabaseHelper(context);
-//
-//        VideoResult video = db.getVideo(movie_id);
-//        WebView displayYoutubeVideo = view.findViewById(R.id.vv_trailer);
-//        displayYoutubeVideo.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                return false;
-//            }
-//        });
-//        WebSettings webSettings = displayYoutubeVideo.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-//        displayYoutubeVideo.loadUrl("https://www.youtube.com/embed/" + video.getKey());
-//
-//        RecyclerView rv_images = view.findViewById(R.id.rv_images);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
-//        rv_images.setLayoutManager(layoutManager);
-//        rv_images.setHasFixedSize(true);
-//
-//        List<ImageResult> images = db.getImages(movie_id);
-//        ImagesAdapter adapter = new ImagesAdapter(images, context, view);
-//        rv_images.setAdapter(adapter);
-//    }
-//
-//    private void movieDetailsFromInternet(final View view){
-//
-//    }
-//
-//}

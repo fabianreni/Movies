@@ -41,7 +41,7 @@ public class LoginFragment extends Fragment {
 
         sharedpreferences= PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-
+        //go to register
         bt_regist=v.findViewById(R.id.bt_register);
         bt_regist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +52,7 @@ public class LoginFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
         bt_log=v.findViewById(R.id.bt_login);
         bt_log.setOnClickListener(new View.OnClickListener() {
             @Override
