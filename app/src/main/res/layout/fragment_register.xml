@@ -6,76 +6,76 @@
     tools:context=".Fragments.RegisterFragment">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:orientation="vertical">
+            android:textAlignment="center"
+            android:text="Register" />
 
 
-            <TextView
-                android:id="@+id/tv_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:textAlignment="center"
-                android:text="Register" />
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            />
 
-            <EditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                 />
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            />
+        <EditText
+            android:id="@+id/et_passwordw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            />
 
-            <EditText
-                android:id="@+id/et_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:ems="10"
-                android:hint="Name"
-                android:inputType="textPersonName"
-               />
-
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
-                />
-
-            <Button
-                android:id="@+id/bt_regi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="125dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Register" />
+        <Button
+            android:id="@+id/bt_regi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Register" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

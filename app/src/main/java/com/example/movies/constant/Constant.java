@@ -8,7 +8,7 @@ public class Constant {
     //public  static final String APIKEY= BuildConfig.API_KEY;
     public  static final String APIKEY= "bef9dd081b28be8cff5f70ebe03cb9e6";
     public static final String LANGUAGE="en-IN";
-    public static final String IMAGE_SIZE="w185";
+    public static final String IMAGE_SIZE="w500";
     public static final String IMAGE_URL="https://image.tmdb.org/t/p/";
 
     public static final int PAGE_ONE=1;

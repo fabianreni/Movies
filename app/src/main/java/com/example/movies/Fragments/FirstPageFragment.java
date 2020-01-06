@@ -1,5 +1,6 @@
 package com.example.movies.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.movies.MainActivity;
 import com.example.movies.R;
 import com.example.movies.adaptors.MoviePageListAdaptor;
 import com.example.movies.models.Result;
@@ -28,6 +30,12 @@ public class FirstPageFragment extends Fragment {
     private MainViewModel viewModel;
     //private String sort_criteria="popular";
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Context context = getActivity();
+        ((MainActivity) context).setTitle("Popular Movies");
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -40,7 +48,7 @@ public class FirstPageFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        adaptor=new MoviePageListAdaptor();
+        adaptor=new MoviePageListAdaptor(getActivity());
         recyclerView.setAdapter(adaptor);
         viewModel.getListLiveData().observe(this, new Observer<PagedList<Result>>() {
             @Override

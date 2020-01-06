@@ -4,7 +4,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="movie_thumbs">movie_thumbs</string>
-    <string name="NAME">NAME</string>
-    <string name="PASS">PASS</string>
-    <string name="IMG">IMG</string>
+    <string name="NAME">name</string>
+    <string name="PASS">pass</string>
 </resources>

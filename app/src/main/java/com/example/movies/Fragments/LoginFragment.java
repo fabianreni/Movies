@@ -23,21 +23,21 @@ import com.example.movies.R;
 public class LoginFragment extends Fragment {
     Button bt_regist,bt_log;
     EditText name,pass;
-    SQLiteOpenHelper openHelper;
-    SQLiteDatabase db;
-    Cursor cursor;
+    Context context;
     SharedPreferences sharedpreferences;
+    @Override
+    public void onCreate (Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = getActivity();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Context context=getActivity();
         View v=inflater.inflate(R.layout.fragment_login, container, false);
 
         name=v.findViewById(R.id.et_name1);
         pass=v.findViewById(R.id.et_password);
-
-        openHelper=new DatabaseHelper(getActivity());
-        db=openHelper.getReadableDatabase();
 
         sharedpreferences= PreferenceManager.getDefaultSharedPreferences(getActivity());
 
@@ -59,30 +59,31 @@ public class LoginFragment extends Fragment {
 
                 String names=name.getText().toString();
                 String password=pass.getText().toString();
-                cursor=db.rawQuery("SELECT * FROM "+DatabaseHelper.TABLE_NAME+ " WHERE " +DatabaseHelper.COL_2 + " =? AND " + DatabaseHelper.COL_4 +" =? ", new String[]{names,password});
-                if(cursor!=null){
-                    if (cursor.getCount()>0){
-                        SharedPreferences.Editor editor=sharedpreferences.edit();
-                        editor.putString(getActivity().getString(R.string.NAME),names);
-                        editor.putString(getActivity().getString(R.string.PASS),password);
-                        editor.commit();
-                        Toast.makeText(getActivity(),"Login successfully",Toast.LENGTH_LONG).show();
-                        FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.mainActivity, new ContainerFragment());
-                        fragmentTransaction.replace(R.id.container, new FirstPageFragment());
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
-                    }else {
-                            Toast.makeText(getActivity(),"Username or password is wrong",Toast.LENGTH_LONG).show();
-                    }
+                DatabaseHelper db = new DatabaseHelper(context);
+                if(!db.userExists(names)){
+                    name.setError("This username does not exist");
+                    return;
                 }
+                if(!password.equals(db.getPassword(names))){
+                    pass.setError("Incorrect password");
+                    return;
+                }
+                SharedPreferences.Editor editor=sharedpreferences.edit();
+                editor.putString(getActivity().getString(R.string.NAME),names);
+                editor.putString(getActivity().getString(R.string.PASS),password);
+                editor.commit();
 
+                Toast.makeText(getActivity(),"Login successfully",Toast.LENGTH_LONG).show();
 
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.mainActivity, new ContainerFragment());
+                fragmentTransaction.replace(R.id.container, new FirstPageFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
+
         });
 
         return v;
     }
-
-
 }
