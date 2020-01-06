@@ -1,4 +1,4 @@
-package com.example.movies.Fragments;
+package com.example.movies.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 
 import com.example.movies.MainActivity;
-import com.example.movies.R;
+
 import com.example.movies.adaptors.ImagesAdapter;
 
 import com.example.movies.adaptors.SimilarMoviesAdapter;
@@ -149,7 +149,6 @@ public class MovieDetailsFragment extends Fragment {
 
             }
         });
-//
 
         ImageButton imgBtn_close = view.findViewById(R.id.bt_imgClose);
         imgBtn_close.setOnClickListener(new View.OnClickListener() {

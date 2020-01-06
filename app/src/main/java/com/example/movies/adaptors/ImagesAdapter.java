@@ -21,7 +21,9 @@ import static com.example.movies.constant.Constant.IMAGE_SIZE;
 import static com.example.movies.constant.Constant.IMAGE_URL;
 
 public class ImagesAdapter extends RecyclerView.Adapter<com.example.movies.adaptors.ImagesAdapter.MyViewHolder> {
+
         //kep bealitasa a film reszlet oldalan
+
         private List<ImageResult> images;
         private Context context;
         private View rootView;
