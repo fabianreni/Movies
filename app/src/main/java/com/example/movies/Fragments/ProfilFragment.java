@@ -176,4 +176,6 @@ public class ProfilFragment extends Fragment {
             profilpik.setImageURI(image);
         }
     }
+
+
 }

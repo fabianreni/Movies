@@ -18,18 +18,6 @@ public interface ApiService {
             @Query("page") int page
     );
 
-    @GET("search/movie")
-    Call<MovieResponse> getSearchResults(
-            @Query("query") String search_key,
-            @Query("api_key") String api_key,
-            @Query("language") String language,
-            @Query("page") int page
-    );
-
-    @GET("movie/popular")
-    Call<MovieResponse> getPopularMovies(
-            @Query("api_key") String api_key
-    );
 
     @GET("movie/{movie_id}/videos")
     Call<VideoResponse> getVideos(
